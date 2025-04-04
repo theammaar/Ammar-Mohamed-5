@@ -6,15 +6,20 @@ int main()
 {
     int n;
     cin >> n;
+    cin.ignore();
+
     int const maxElements = n;
     string bookTitle;
-
     string arr[maxElements];
     string result[maxElements];
 
-    for (int i = 0; i < n; i++)
+    bool exist = false;
+
+    getline(cin, bookTitle);
+    arr[0] = bookTitle;
+
+    for (int i = 1; i <= n; i++)
     {
-        bool exist = false;
         getline(cin, bookTitle);
 
         if (bookTitle.size() != 0)
@@ -22,14 +27,9 @@ int main()
             for (int j = 0; j < n; j++)
             {
                 if (arr[j] == bookTitle)
-                {
                     exist = true;
-                }
-
-                if (arr[j] != bookTitle)
-                {
+                else if (arr[j] != bookTitle)
                     exist = false;
-                }
             }
 
             if (exist == false)
